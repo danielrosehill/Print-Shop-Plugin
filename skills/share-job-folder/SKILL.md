@@ -42,7 +42,7 @@ Pulled from `<job>/order.json`:
 
 ### Email-with-link
 
-1. Upload the job folder (or its zip) to Google Drive: `google-workspace-personal__create_drive_folder` for the job folder, then `google-workspace-personal__create_drive_file` per file with `folder_id` set. The tool takes `content` (text), `base64_content`, or a `fileUrl` it fetches — not a local path — so for a binary zip/PDF either pass `base64_content` (small files) or stage the file at a short-lived URL and pass that as `fileUrl`.
+1. Upload the job folder (or its zip) to Google Drive: `google-workspace-personal__create_drive_folder` for the job folder, then `google-workspace-personal__create_drive_file` per file with `folder_id` set. The tool takes `content` (text), `base64_content`, or a `fileUrl` it fetches — not a local path — so for a binary zip/PDF either pass `base64_content` (small files) or stage the file with `cloud-storage:stage-file` (`stage.sh <file>` → presigned URL; delete after) and pass that URL as `fileUrl`. Don't improvise another route.
 2. Set sharing per the recipient: `google-workspace-personal__manage_drive_access` with `action=grant`, `share_with=<email>`, `role=reader` (or `commenter` if requested). Get the link with `google-workspace-personal__get_drive_shareable_link`.
 3. Compose email body with the share link in place of an attachment.
 4. Send.

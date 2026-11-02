@@ -60,7 +60,7 @@ Subsequent runs read the config and skip prompting unless the user explicitly sa
    - `mkdir -p <printing_folder>/<subfolder>/`
    - `cp <input> <printing_folder>/<subfolder>/<basename>.pdf`
 4. For `gdrive` type:
-   - Use the Google Drive MCP tools to create the subfolder if missing and upload the file: find it with `google-workspace-personal__list_drive_items` (`folder_id` = the printing folder) or `search_drive_files`, create it with `create_drive_folder`, then upload with `create_drive_file` (`folder_id` = subfolder; pass `base64_content` or a staged `fileUrl` — it does not read local paths).
+   - Use the Google Drive MCP tools to create the subfolder if missing and upload the file: find it with `google-workspace-personal__list_drive_items` (`folder_id` = the printing folder) or `search_drive_files`, create it with `create_drive_folder`, then upload with `create_drive_file` (`folder_id` = subfolder; pass `base64_content` for small files, otherwise stage with `cloud-storage:stage-file` and pass the presigned URL as `fileUrl` — it does not read local paths).
 5. Verify the file exists at the destination and report the full path or Drive URL.
 
 ## Output
