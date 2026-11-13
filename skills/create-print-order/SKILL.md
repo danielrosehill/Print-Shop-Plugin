@@ -34,7 +34,7 @@ Adds to the existing `digital-printing/config.json`:
   "subfolder_strategy": "...",
   "contact": {
     "name": "Daniel Rosehill",
-    "email": "daniel@example.com",
+    "email": "alex@example.com",
     "phone": "+972 ...",
     "company": "DSR Holdings"
   }
@@ -50,7 +50,7 @@ Adds to the existing `digital-printing/config.json`:
   "due": "2026-05-01",
   "customer": {
     "name": "Daniel Rosehill",
-    "email": "daniel@example.com",
+    "email": "alex@example.com",
     "phone": "+972 ...",
     "company": "DSR Holdings"
   },
