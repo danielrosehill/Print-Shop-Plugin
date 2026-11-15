@@ -1,6 +1,8 @@
-# Digital-Printing
+# Print Shop
 
-A Claude Code plugin with skills for preparing PDFs and documents for digital printing.
+Get documents printed: prepare PDFs for digital printing, park them in a printing folder (by date, by subject or per printer), and submit them to print shops the way each one takes jobs (Drive share with their Gmail, email, web upload or walk-in).
+
+Formerly `digital-printing` (renamed in 2.0.0, 2026-11-15). Existing config under `digital-printing/` is migrated on first use.
 
 The plugin covers the full pre-print pipeline: profiling a PDF, fixing the obscure problems that bite on office printers (non-embedded fonts, live transparency, oversized images, mixed color spaces), preparing the layout (resize, bind, strip footers, add cover pages, watermarks, branded footers), bundling files into a print job folder with a formal order document, and shipping it to a digital printer by email or Google Drive share.
 
@@ -51,7 +53,9 @@ The plugin covers the full pre-print pipeline: profiling a PDF, fixing the obscu
 | `create-job-folder` | Bundle one or more verified PDFs into a single job folder with a manifest |
 | `create-print-order` | Generate a formal printer-facing order (PDF + JSON) — copies, color, paper, binding, finishing, contact info |
 | `zip-job-folder` | Archive the folder for transmission |
-| `upload-to-printing-folder` | Move a finished PDF into the user's printing folder, organized by date or printer per saved preference |
+| `file-for-print` | File a finished file into the printing folder: by date, by subject, or into a printer's queue |
+| `add-printer` | Register a printer: email / Gmail, how it takes jobs, extra steps; creates its queue folder |
+| `send-to-printer` | Submit a file to a registered printer by its saved procedure, and log it |
 | `share-job-folder` | Send the job to a printer or recipient via email (zip attached) and/or Google Drive share link |
 
 ## Agent
@@ -65,7 +69,13 @@ The plugin covers the full pre-print pipeline: profiling a PDF, fixing the obscu
 **One-shot prep, then upload:**
 
 ```
-Hand a PDF to the orchestrator → it profiles & produces a print-ready output → upload-to-printing-folder
+Hand a PDF to the orchestrator → it profiles & produces a print-ready output → file-for-print
+```
+
+**Park it and send it to a print shop:**
+
+```
+file-for-print (printer queue) → send-to-printer   # add-printer first for a new shop
 ```
 
 **Build a multi-file job for a print shop:**
@@ -83,17 +93,13 @@ embed-fonts → flatten-transparency → downsample-images
 
 ## Configuration
 
-The plugin keeps small config (printing folder location, subfolder strategy, contact info, printer contacts) at:
+All user data lives in a private overlay directory, not in the plugin: `config.json`
+(printing folder, its By Date / By Subject / Printers layout, contact block) and
+`printers.json` (each printer's addresses, submission method and procedure, queue folder,
+history). Location, resolution order and schemas: [references/user-data.md](references/user-data.md).
 
-```
-$CLAUDE_USER_DATA/digital-printing/config.json
-```
-
-with the standard fallback `${XDG_DATA_HOME:-$HOME/.local/share}/claude-plugins/digital-printing/config.json`.
-
-User-owned data — the printing folder itself, job folders — lives wherever the user chose during onboarding (typically `~/Documents/Printing/` or a Google Drive folder). The plugin only stores the *pointer* in its config.
-
-The plugin never writes to its own install directory under `~/.claude/plugins/`, which is overwritten on plugin updates.
+The printing folder itself (local or Google Drive) is the user's; the plugin stores only a
+pointer to it. Nothing is written under `~/.claude/plugins/`.
 
 ## Tooling assumptions
 
@@ -112,7 +118,7 @@ The skills assume these standard CLI tools are available. Skills will check and 
 ## Installation
 
 ```bash
-claude plugins install digital-printing@danielrosehill
+claude plugins install print-shop@danielrosehill
 ```
 
 Then restart Claude Code.

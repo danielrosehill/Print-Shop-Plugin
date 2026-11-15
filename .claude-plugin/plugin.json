@@ -1,12 +1,19 @@
 {
-  "name": "digital-printing",
-  "version": "1.0.3",
-  "description": "Skills and an orchestrator agent for preparing PDFs for digital printing — page resize, grayscale, footer/page-number stripping, page removal, binding optimization, watermarks, footer burn-ins, cover pages, font embedding, transparency flattening, image downsampling, color profile normalization, metadata strip/write, bleed-safety verification, job folder bundling, formal print orders, and email/Drive sharing to a digital printer.",
+  "name": "print-shop",
+  "version": "2.0.0",
+  "description": "Get documents printed: PDF prep for digital printing (resize, grayscale, fonts, transparency, bleed, watermarks, covers), a printing folder filed by date, subject or printer queue, a printer registry with each shop's submission procedure, and sending jobs by Drive share or email.",
   "author": {
     "name": "Daniel Rosehill",
     "url": "https://github.com/danielrosehill"
   },
-  "repository": "https://github.com/danielrosehill/Digital-Printing-Plugin",
+  "repository": "https://github.com/danielrosehill/Print-Shop-Plugin",
   "license": "MIT",
-  "keywords": ["pdf", "printing", "document-prep", "prepress", "digital-printing"]
+  "keywords": [
+    "printing",
+    "print-shop",
+    "pdf",
+    "prepress",
+    "digital-printing",
+    "google-drive"
+  ]
 }

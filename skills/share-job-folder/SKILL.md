@@ -10,7 +10,7 @@ Send a finished print job folder to a printer, print shop, or collaborator.
 ## Inputs
 
 - **Job folder path** (required).
-- **Recipient(s)** (required) — one or more email addresses, or a printer/contact name resolved from the contacts in config.
+- **Recipient(s)** (required) — one or more email addresses, or a printer name resolved from `printers.json` (see [references/user-data.md](../../references/user-data.md); register new ones with `add-printer`).
 - **Channels** (optional) — any combination of:
   - `email` — attach zipped folder.
   - `email-with-link` — upload to Drive, share, paste link in email body (best for jobs over email size limits).
@@ -53,23 +53,12 @@ Pulled from `<job>/order.json`:
 2. Share with recipient(s).
 3. Return the share URL — no email sent.
 
-## Config
+## Printers
 
-Optional contacts under `$CLAUDE_USER_DATA/digital-printing/config.json`:
-
-```json
-{
-  "printer_contacts": [
-    {
-      "name": "Office Depot — Talpiot",
-      "email": "talpiot-print@example.com",
-      "preferred_channel": "email-with-link"
-    }
-  ]
-}
-```
-
-When the user says "send to Office Depot Talpiot", resolve the email from this list and use the saved preferred channel.
+Recipients named as a printer resolve through `printers.json`. Its `submission` picks the
+default channel: `drive-share` → `gdrive` shared with `share_email`; `email-attachment` →
+`email`; `email-link` → `email-with-link`. Follow the printer's `procedure` after sending and
+append to its `history`, as `send-to-printer` does.
 
 ## Workflow summary
 

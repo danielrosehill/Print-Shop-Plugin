@@ -18,7 +18,7 @@ Produce a structured order document that tells a digital printer exactly what to
 - **Finishing** (optional) — `trim`, `lamination`, `hole-punch`, `fold` (with type).
 - **Special notes** (optional) — free text for the printer.
 - **Due date** (optional).
-- **Contact info** — pulled from `$CLAUDE_USER_DATA/digital-printing/config.json` under `contact`. On first use, prompt and persist:
+- **Contact info** — pulled from `config.json` under `contact` (paths: [references/user-data.md](../../references/user-data.md)). On first use, prompt and persist:
   - Full name
   - Email
   - Phone
@@ -26,12 +26,12 @@ Produce a structured order document that tells a digital printer exactly what to
 
 ## Config
 
-Adds to the existing `digital-printing/config.json`:
+Adds to the existing `print-shop/config.json`:
 
 ```json
 {
   "printing_folder": { "...": "..." },
-  "subfolder_strategy": "...",
+  "default_filing": "...",
   "contact": {
     "name": "Daniel Rosehill",
     "email": "alex@example.com",

@@ -1,6 +1,6 @@
 ---
 name: print-prep-orchestrator
-description: Profiles a PDF and orchestrates the right combination of digital-printing skills (resize, grayscale, embed-fonts, flatten-transparency, downsample-images, normalize-color-profile, strip-metadata, verify-bleed-safe, etc.) to make it print-ready. Use when the user hands over a PDF and says "make this print-ready", "prep this for the printer", "fix this PDF for printing", or when multiple atomic skills would be needed and the user doesn't want to chain them by hand.
+description: Profiles a PDF and orchestrates the right combination of print-shop skills (resize, grayscale, embed-fonts, flatten-transparency, downsample-images, normalize-color-profile, strip-metadata, verify-bleed-safe, etc.) to make it print-ready. Use when the user hands over a PDF and says "make this print-ready", "prep this for the printer", "fix this PDF for printing", or when multiple atomic skills would be needed and the user doesn't want to chain them by hand.
 ---
 
 # Print Prep Orchestrator

@@ -13,7 +13,7 @@ Group multiple finished PDFs into a single, named folder with a manifest describ
 - **PDF paths** (required) — one or more files to include.
 - **Printer** (optional) — printer name or print shop, recorded in the manifest.
 - **Notes** (optional) — free-text notes for the printer (paper stock, duplex preference, copies, finishing).
-- **Parent folder** (optional) — defaults to the user's printing folder from `upload-to-printing-folder`'s config (`$CLAUDE_USER_DATA/digital-printing/config.json`); falls back to `~/Documents/Printing/` if no config.
+- **Parent folder** (optional) — defaults to the user's printing folder from `file-for-print`'s config (see [references/user-data.md](../../references/user-data.md)); falls back to `~/Documents/Printing/` if no config.
 
 ## Layout
 
